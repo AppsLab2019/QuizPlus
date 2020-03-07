@@ -6,23 +6,50 @@
              mc:Ignorable="d"
              x:Class="QuizPlus.MainPage">
 
-    <Grid>
+    <Grid RowSpacing="50" ColumnSpacing="20" BackgroundColor="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image
-            Grid.Row="1"
-            Source="logo.png"
-            Aspect="AspectFill" />
-        <Button
-            Grid.Row="2"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="1/10"
+            TextColor="Black"
+            FontSize="Large"
+            Margin="130, 0, 0, 0"
+            x:Name ="listcounter"/>
+        <Label
+            Text="Slovakia"
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
             HorizontalOptions="Center"
-            WidthRequest="200"
-            Clicked="Button_Clicked"
-            Text="START" />
+            VerticalOptions="Center"
+            FontSize="Large"
+            TextColor="Black"
+            x:Name="countryname"/>
+        <Image
+            Source="slovensko.png"      
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            x:Name ="countryflag"/>
+
+
+        <Button Text="" Grid.Row="2" Grid.Column="0" Margin="20, 10, 20, 10" Clicked="Clicked" x:Name="b1"/>
+        <Button Text="" Grid.Row="2" Grid.Column="1" Margin="20, 10, 20, 10" Clicked="Clicked" x:Name="b2"/>
+        <Button Text="" Grid.Row="3" Grid.Column="0" Margin="20, 10, 20, 10" Clicked="Clicked" x:Name="b3"/>
+        <Button Text="" Grid.Row="3" Grid.Column="1" Margin="20, 10, 20, 10" Clicked="Clicked" x:Name="b4"/>
     </Grid>
 
 </ContentPage>
