@@ -24,16 +24,16 @@ namespace QuizPlus
         {
             InitializeComponent();
             Buttons = new[] { b1, b2, b3, b4 };
-            GetRightContry();
+            GetRightCountry();
         }
 
         private void Clicked(object sender, EventArgs e)
         {
             //Navigation.PushAsync(new Page1());
-            GetRightContry();
+            GetRightCountry();
         }
 
-        private void GetRightContry()
+        private void GetRightCountry()
         {
             var random = new Random();
             var i = random.Next(0, Countries.Count - 1);
