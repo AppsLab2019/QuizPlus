@@ -27,7 +27,6 @@
             Margin="130, 0, 0, 0"
             x:Name ="listcounter"/>
         <Label
-            Text="Slovakia"
             Grid.Column="0"
             Grid.Row="0"
             Grid.ColumnSpan="2"
@@ -35,9 +34,10 @@
             VerticalOptions="Center"
             FontSize="Large"
             TextColor="Black"
-            x:Name="countryname"/>
+            x:Name="label"/>
+        
         <Image
-            Source="slovensko.png"      
+            Source="{Binding Source}"      
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"

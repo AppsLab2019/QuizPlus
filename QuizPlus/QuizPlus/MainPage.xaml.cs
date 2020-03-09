@@ -13,36 +13,31 @@ namespace QuizPlus
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        private List<string> Countries = new List<string>()
+        
+        private Country CorrectCountry;
+        private List<Country> Countries = new List<Country>()
         {
-            "armensko","grecko","holandsko","lotyssko","slovensko","maďarsko","ukrajina","poľsko"
+            new Country("Armenia", "Jerevan"), new Country("Greece", "Athens"), new Country("Hungary", "Budapest"), new Country("Latvia", "Riga"), new Country("Netherlands", "Amsterdam"), new Country("Poland", "Warsaw"), new Country("Slovakia", "Bratislava"), new Country("Ukraine", "Kiev")
         };
+        private Random rnd = new Random();        
         private Button[] Buttons;
-        private int buttonText;
-
         public MainPage()
-        {
+        {                        
             InitializeComponent();
             Buttons = new[] { b1, b2, b3, b4 };
-            GetRightCountry();
+            CorrectCountry = Countries[rnd.Next(0, Countries.Count)];
+            label.Text = CorrectCountry.Name;
+            foreach(var btn in Buttons)
+            {
+                btn.Text = Countries[rnd.Next(0, Countries.Count)].Capital;
+            }
         }
 
         private void Clicked(object sender, EventArgs e)
         {
-            //Navigation.PushAsync(new Page1());
-            GetRightCountry();
+            
         }
 
-        private void GetRightCountry()
-        {
-            var random = new Random();
-            var i = random.Next(0, Countries.Count - 1);
-            var country = Countries[i];
-            countryname.Text = country;
-            countryflag.Source = $"{country}.png";
-            buttonText = random.Next(0, 3);
-            Buttons[buttonText].Text = country;
-
-        }
+        
     }
 }
