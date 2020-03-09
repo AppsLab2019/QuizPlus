@@ -15,7 +15,7 @@ namespace QuizPlus
     {
         private List<string> Countries = new List<string>()
         {
-            "armensko","grecko","holandsko","lotssko","slovensko","maďarsko","ukrajina","poľsko"
+            "armensko","grecko","holandsko","lotyssko","slovensko","maďarsko","ukrajina","poľsko"
         };
         private Button[] Buttons;
         private int buttonText;
