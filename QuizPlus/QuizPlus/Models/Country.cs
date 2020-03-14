@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace QuizPlus
+namespace QuizPlus.Models
 {
-    class Country
+    public class Country
     {
         public string Name { get; set; }
         public string Capital { get; set; }
