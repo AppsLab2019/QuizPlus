@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -10,23 +9,14 @@ namespace QuizPlus.ViewModels
 {
     public sealed class MainViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public int MaxRounds { get; } = 15;
         public int CurrentRound { get; private set; }
 
-        public ImageSource CountryImage { get; private set; }
-        public string CountryName { get; private set; }
-
-        public string FirstCountry => _currentCountries[0].Capital;
-        public string SecondCountry => _currentCountries[1].Capital;
-        public string ThirdCountry => _currentCountries[2].Capital;
-        public string FourthCountry => _currentCountries[3].Capital;
+        public Country[] CurrentCountries { get; private set; }
+        public Country CorrectCountry { get; private set; }
 
         public ICommand AnswerCommand { get; }
 
-        private Country[] _currentCountries;
-        private Country _correctCountry;
         private int _correctGuesses;
 
         public MainViewModel()
@@ -43,13 +33,13 @@ namespace QuizPlus.ViewModels
         {
             var buttonIndex = int.Parse(button);
 
-            if (_currentCountries[buttonIndex] == _correctCountry)
+            if (CurrentCountries[buttonIndex] == CorrectCountry)
                 ++_correctGuesses;
 
-            if (++CurrentRound <= MaxRounds)
+            if (MaxRounds > ++CurrentRound)
             {
                 ChooseRandomCountries();
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(default));
+                RaiseAllPropertiesChanged();
             }
             else HandleGameEnd();
         }
@@ -57,12 +47,12 @@ namespace QuizPlus.ViewModels
         private async void HandleGameEnd()
         {
             await Application.Current.MainPage.DisplayAlert("Congratulations", 
-                $"You guessed {_correctGuesses} out of {MaxRounds} correctly!", "Ok");
+                $"You guessed {_correctGuesses} out of {MaxRounds} correctly!", "Reset");
 
             CurrentRound = 1;
             ChooseRandomCountries();
 
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(default));
+            RaiseAllPropertiesChanged();
         }
 
         private void ChooseRandomCountries()
@@ -78,11 +68,8 @@ namespace QuizPlus.ViewModels
                     countries.Add(country);
             }
 
-            _currentCountries = countries.ToArray();
-            _correctCountry = countries[rng.Next(0, 4)];
-
-            CountryImage = ImageSource.FromFile($"{_correctCountry.Name}.png");
-            CountryName = _correctCountry.Name;
+            CurrentCountries = countries.ToArray();
+            CorrectCountry = countries[rng.Next(0, 4)];
         }
 
         private List<Country> Countries = new List<Country>()
@@ -96,5 +83,10 @@ namespace QuizPlus.ViewModels
             new Country("Slovakia", "Bratislava"),
             new Country("Ukraine", "Kiev")
         };
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void RaiseAllPropertiesChanged() =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
     }
 }

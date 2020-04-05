@@ -40,17 +40,17 @@
 
         <Image Grid.Row="3"
                HeightRequest="150"
-               Source="{Binding CountryImage}"/>
+               Source="{Binding CorrectCountry.Image}"/>
 
         <Label Grid.Row="4"
-               Text="{Binding CountryName}"
+               Text="{Binding CorrectCountry.Name}"
                FontSize="Large"
                HorizontalOptions="Center"/>
 
-        <Button Grid.Row="6" Text="{Binding FirstCountry}" Command="{Binding AnswerCommand}" CommandParameter="0"/>
-        <Button Grid.Row="7" Text="{Binding SecondCountry}" Command="{Binding AnswerCommand}" CommandParameter="1"/>
-        <Button Grid.Row="8" Text="{Binding ThirdCountry}" Command="{Binding AnswerCommand}" CommandParameter="2"/>
-        <Button Grid.Row="9" Text="{Binding FourthCountry}" Command="{Binding AnswerCommand}" CommandParameter="3"/>
+        <Button Grid.Row="6" Text="{Binding CurrentCountries[0].Capital}" Command="{Binding AnswerCommand}" CommandParameter="0"/>
+        <Button Grid.Row="7" Text="{Binding CurrentCountries[1].Capital}" Command="{Binding AnswerCommand}" CommandParameter="1"/>
+        <Button Grid.Row="8" Text="{Binding CurrentCountries[2].Capital}" Command="{Binding AnswerCommand}" CommandParameter="2"/>
+        <Button Grid.Row="9" Text="{Binding CurrentCountries[3].Capital}" Command="{Binding AnswerCommand}" CommandParameter="3"/>
     </Grid>
 
 </ContentPage>

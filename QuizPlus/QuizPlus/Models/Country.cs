@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Xamarin.Forms;
 
 namespace QuizPlus.Models
 {
@@ -8,15 +6,12 @@ namespace QuizPlus.Models
     {
         public string Name { get; set; }
         public string Capital { get; set; }
+        public ImageSource Image => ImageSource.FromFile($"{Name}.png");
         
         public Country(string name, string capital)
         {
             Name = name;
             Capital = capital;
-        }
-        public Country()
-        {
-
         }
     }
 }
