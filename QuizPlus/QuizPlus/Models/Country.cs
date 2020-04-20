@@ -12,6 +12,6 @@ namespace QuizPlus.Models
         {
             Name = name;
             Capital = capital;
-        }
+        } 
     }
 }
