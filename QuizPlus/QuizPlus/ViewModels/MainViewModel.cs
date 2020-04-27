@@ -1,6 +1,7 @@
 ﻿using QuizPlus.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -9,7 +10,7 @@ namespace QuizPlus.ViewModels
 {
     public sealed class MainViewModel : INotifyPropertyChanged
     {
-        public int MaxRounds { get; } = 15;
+        public int MaxRounds { get; } = 10;
         public int CurrentRound { get; private set; }
 
         public Country[] CurrentCountries { get; private set; }
@@ -29,22 +30,22 @@ namespace QuizPlus.ViewModels
             AnswerCommand = new Command<string>(HandleAnswer);
         }
         
-        private void HandleAnswer(string button)
+        private async void HandleAnswer(string button)
         {
             var buttonIndex = int.Parse(button);
         
             if (CurrentCountries[buttonIndex] == CorrectCountry)
                 ++_correctGuesses;
 
-            if (MaxRounds > ++CurrentRound)
+            if (MaxRounds >= ++CurrentRound)
                 ChooseRandomCountries();
             else 
-                HandleGameEnd();
+                await HandleGameEnd();
 
             RaiseAllPropertiesChanged();
         }
 
-        private async void HandleGameEnd()
+        private async Task HandleGameEnd()
         {
             await Application.Current.MainPage.DisplayAlert("Congratulations", 
                 $"You guessed {_correctGuesses} out of {MaxRounds} correctly!", "Reset");
@@ -89,7 +90,6 @@ namespace QuizPlus.ViewModels
 
         private void RaiseAllPropertiesChanged() =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
-
         #endregion
     }
 }

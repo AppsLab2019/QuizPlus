@@ -13,9 +13,9 @@
 
     <Grid Padding="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -26,7 +26,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="1"
+        <Image Source="logo.png"
+               HeightRequest="75"/>
+
+        <Label Grid.Row="2"
                FontSize="Caption"
                HorizontalOptions="Center">
             <Label.FormattedText>
