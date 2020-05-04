@@ -81,7 +81,19 @@ namespace QuizPlus.ViewModels
             new Country("Netherlands", "Amsterdam"),
             new Country("Poland", "Warsaw"),
             new Country("Slovakia", "Bratislava"),
-            new Country("Ukraine", "Kiev")
+            new Country("Ukraine", "Kiev"),           
+            new Country("Croatia", "Zagreb"),
+            new Country("Mexico", "Mexico City"),
+            new Country("Brazil", "Brasília"),
+            new Country("Cuba", "Havana"),
+            new Country("Japan", "Tokyo"),
+            new Country("China", "Beijing"),
+            new Country("Moldova", "Chișinău"),
+            new Country("Zimbabwe", "Harare"),
+            new Country("Russia", "Moscow"),
+            new Country("Vietnam", "Hanoi"),
+            new Country("Australia", "Canberra"),
+            new Country("", ""),
         };
 
         #region INotifyPropertyChanged
