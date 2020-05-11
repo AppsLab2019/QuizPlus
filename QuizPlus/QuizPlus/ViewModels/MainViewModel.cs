@@ -25,6 +25,8 @@ namespace QuizPlus.ViewModels
             CurrentRound = 1;
             _correctGuesses = 0;
 
+            
+
             ChooseRandomCountries();
 
             AnswerCommand = new Command<string>(HandleAnswer);
@@ -33,9 +35,12 @@ namespace QuizPlus.ViewModels
         private async void HandleAnswer(string button)
         {
             var buttonIndex = int.Parse(button);
+            var playerChoice = CurrentCountries[buttonIndex];
         
-            if (CurrentCountries[buttonIndex] == CorrectCountry)
+            if (playerChoice == CorrectCountry)
                 ++_correctGuesses;
+            else
+                InCorrectCountries.Add(CorrectCountry);
 
             if (MaxRounds >= ++CurrentRound)
                 ChooseRandomCountries();
@@ -44,11 +49,21 @@ namespace QuizPlus.ViewModels
 
             RaiseAllPropertiesChanged();
         }
-
+        List<Country> InCorrectCountries = new List<Country>();
+       
         private async Task HandleGameEnd()
         {
+            string text = "Your incorrect guesses are ";
+
+            foreach(Country country in InCorrectCountries)
+            {
+                text += country.Name;
+                text += " ";
+
+            }
+
             await Application.Current.MainPage.DisplayAlert("Congratulations", 
-                $"You guessed {_correctGuesses} out of {MaxRounds} correctly!", "Reset");
+                $"You guessed {_correctGuesses} out of {MaxRounds} correctly! {text}", "Reset");
 
             CurrentRound = 1;
             _correctGuesses = 0;
@@ -66,6 +81,7 @@ namespace QuizPlus.ViewModels
                 var country = Countries[rng.Next(0, Countries.Count)];
                 if (!countries.Contains(country))
                     countries.Add(country);
+
             }
 
             CurrentCountries = countries.ToArray();
@@ -93,7 +109,8 @@ namespace QuizPlus.ViewModels
             new Country("Russia", "Moscow"),
             new Country("Vietnam", "Hanoi"),
             new Country("Australia", "Canberra"),
-            new Country("", ""),
+            new Country("Egypt", "Cairo"),
+            new Country("Kazakhstan", "	Nur-Sultan")
         };
 
         #region INotifyPropertyChanged
