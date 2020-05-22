@@ -22,11 +22,13 @@ namespace QuizPlus.ViewModels
 
         private int _correctGuesses;
         private bool _isBusy;
+        private readonly List<Country> _allCountries;
 
         public MainViewModel()
         {            
             CurrentRound = 1;
             _correctGuesses = 0;
+            _allCountries = App.Countries;
 
             ChooseRandomCountries();
             CountryColors = new Color[] { Color.Gray, Color.Gray, Color.Gray, Color.Gray };
@@ -76,6 +78,7 @@ namespace QuizPlus.ViewModels
 
             CurrentRound = 1;
             _correctGuesses = 0;
+            InCorrectCountries.Clear();
 
             ChooseRandomCountries();
         }
@@ -85,7 +88,7 @@ namespace QuizPlus.ViewModels
             if (correct)
                 CountryColors[answerIndex] = Color.LightGreen;
             else
-                CountryColors[answerIndex] = Color.DarkRed;
+                CountryColors[answerIndex] = Color.Red;
 
             RaisePropertyChanged(nameof(CountryColors));
             await Task.Delay(1000);
@@ -99,7 +102,7 @@ namespace QuizPlus.ViewModels
 
             while (countries.Count < 4)
             {               
-                var country = Countries[rng.Next(0, Countries.Count)];
+                var country = _allCountries[rng.Next(0, _allCountries.Count)];
 
                 if (!countries.Contains(country))
                     countries.Add(country);
@@ -108,32 +111,6 @@ namespace QuizPlus.ViewModels
             CurrentCountries = countries.ToArray();
             CorrectCountry = countries[rng.Next(0, 4)];
         }
-
-        private List<Country> Countries = new List<Country>()
-        {
-            new Country("Armenia", "Jerevan"),
-            new Country("Greece", "Athens"),
-            new Country("Hungary", "Budapest"),
-            new Country("Latvia", "Riga"),
-            new Country("Netherlands", "Amsterdam"),
-            new Country("Poland", "Warsaw"),
-            new Country("Slovakia", "Bratislava"),
-            new Country("Ukraine", "Kiev"),           
-            new Country("Croatia", "Zagreb"),
-            new Country("Mexico", "Mexico City"),
-            new Country("Brazil", "Brasília"),
-            new Country("Cuba", "Havana"),
-            new Country("Japan", "Tokyo"),
-            new Country("China", "Beijing"),
-            new Country("Moldova", "Chișinău"),
-            new Country("Zimbabwe", "Harare"),
-            new Country("Russia", "Moscow"),
-            new Country("Vietnam", "Hanoi"),
-            new Country("Australia", "Canberra"),
-            new Country("Egypt", "Cairo"),
-            new Country("Kazakhstan", "	Nur-Sultan")
-        };
-         
 
         #region INotifyPropertyChanged
 
@@ -144,6 +121,7 @@ namespace QuizPlus.ViewModels
 
         private void RaiseAllPropertiesChanged() =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
+
         #endregion
     }
 }
