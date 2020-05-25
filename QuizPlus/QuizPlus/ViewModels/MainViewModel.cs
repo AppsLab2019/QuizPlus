@@ -66,13 +66,29 @@ namespace QuizPlus.ViewModels
         private async Task HandleGameEnd()
         {
             string text = "Your incorrect guesses are ";
+            int i = 0;
+            int x = 0;
+            
+            foreach(Country country in InCorrectCountries)
+            {
+                i += 1;
+            }
 
             foreach(Country country in InCorrectCountries)
             {
-                text += country.Name;
-                text += " ";
+                x += 1;
+                if (x != i)
+                {
+                    text += country.Name;
+                    text += ", ";
+                }
+                else 
+                {
+                    text += country.Name;
+                    text += ".";
+                }
             }
-
+            
             await Application.Current.MainPage.DisplayAlert("Congratulations", 
                 $"You guessed {_correctGuesses} out of {MaxRounds} correctly! {text}", "Reset");
 
