@@ -99,9 +99,9 @@ namespace QuizPlus.ViewModels
         {   
             
             if (correct)
-                CountryColors[answerIndex] = Color.FromHex("#1f5414");
+                CountryColors[answerIndex] = Color.LightGreen;
             else
-                CountryColors[answerIndex] = Color.Red;
+                CountryColors[answerIndex] = Color.FromHex("#ff6b6b");
 
             RaisePropertyChanged(nameof(CountryColors));
             await Task.Delay(850);
