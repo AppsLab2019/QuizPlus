@@ -11255,100 +11255,103 @@ namespace QuizPlus.Droid
 			public const int Portugal = 2131165399;
 			
 			// aapt resource value: 0x7F0700D8
-			public const int Romania = 2131165400;
+			public const int QuizLogo = 2131165400;
 			
 			// aapt resource value: 0x7F0700D9
-			public const int Russia = 2131165401;
+			public const int Romania = 2131165401;
 			
 			// aapt resource value: 0x7F0700DA
-			public const int SanMarino = 2131165402;
+			public const int Russia = 2131165402;
 			
 			// aapt resource value: 0x7F0700DB
-			public const int Senegal = 2131165403;
+			public const int SanMarino = 2131165403;
 			
 			// aapt resource value: 0x7F0700DC
-			public const int Serbia = 2131165404;
+			public const int Senegal = 2131165404;
 			
 			// aapt resource value: 0x7F0700DD
-			public const int SierraLeone = 2131165405;
+			public const int Serbia = 2131165405;
 			
 			// aapt resource value: 0x7F0700DE
-			public const int Singapore = 2131165406;
+			public const int SierraLeone = 2131165406;
 			
 			// aapt resource value: 0x7F0700DF
-			public const int Slovakia = 2131165407;
+			public const int Singapore = 2131165407;
 			
 			// aapt resource value: 0x7F0700E0
-			public const int Slovenia = 2131165408;
+			public const int Slovakia = 2131165408;
 			
 			// aapt resource value: 0x7F0700E1
-			public const int SouthKorea = 2131165409;
+			public const int Slovenia = 2131165409;
 			
 			// aapt resource value: 0x7F0700E2
-			public const int Spain = 2131165410;
+			public const int SouthKorea = 2131165410;
 			
 			// aapt resource value: 0x7F0700E3
-			public const int SriLanka = 2131165411;
+			public const int Spain = 2131165411;
 			
 			// aapt resource value: 0x7F0700E4
-			public const int Sudan = 2131165412;
+			public const int SriLanka = 2131165412;
 			
 			// aapt resource value: 0x7F0700E5
-			public const int Sweden = 2131165413;
+			public const int Sudan = 2131165413;
 			
 			// aapt resource value: 0x7F0700E6
-			public const int Switzerland = 2131165414;
+			public const int Sweden = 2131165414;
 			
 			// aapt resource value: 0x7F0700E7
-			public const int Syria = 2131165415;
+			public const int Switzerland = 2131165415;
 			
 			// aapt resource value: 0x7F0700E8
-			public const int Thailand = 2131165416;
+			public const int Syria = 2131165416;
 			
 			// aapt resource value: 0x7F0700E9
-			public const int TheBahamas = 2131165417;
+			public const int Thailand = 2131165417;
 			
 			// aapt resource value: 0x7F0700EA
-			public const int tooltip_frame_dark = 2131165418;
+			public const int TheBahamas = 2131165418;
 			
 			// aapt resource value: 0x7F0700EB
-			public const int tooltip_frame_light = 2131165419;
+			public const int tooltip_frame_dark = 2131165419;
 			
 			// aapt resource value: 0x7F0700EC
-			public const int Turkey = 2131165420;
+			public const int tooltip_frame_light = 2131165420;
 			
 			// aapt resource value: 0x7F0700ED
-			public const int Turkmenistan = 2131165421;
+			public const int Turkey = 2131165421;
 			
 			// aapt resource value: 0x7F0700EE
-			public const int Ukraine = 2131165422;
+			public const int Turkmenistan = 2131165422;
 			
 			// aapt resource value: 0x7F0700EF
-			public const int UnitedKingdom = 2131165423;
+			public const int Ukraine = 2131165423;
 			
 			// aapt resource value: 0x7F0700F0
-			public const int UnitedStates = 2131165424;
+			public const int UnitedKingdom = 2131165424;
 			
 			// aapt resource value: 0x7F0700F1
-			public const int Uruguay = 2131165425;
+			public const int UnitedStates = 2131165425;
 			
 			// aapt resource value: 0x7F0700F2
-			public const int VaticanCity = 2131165426;
+			public const int Uruguay = 2131165426;
 			
 			// aapt resource value: 0x7F0700F3
-			public const int Venezuela = 2131165427;
+			public const int VaticanCity = 2131165427;
 			
 			// aapt resource value: 0x7F0700F4
-			public const int Vietnam = 2131165428;
+			public const int Venezuela = 2131165428;
 			
 			// aapt resource value: 0x7F0700F5
-			public const int Yemen = 2131165429;
+			public const int Vietnam = 2131165429;
 			
 			// aapt resource value: 0x7F0700F6
-			public const int Zambia = 2131165430;
+			public const int Yemen = 2131165430;
 			
 			// aapt resource value: 0x7F0700F7
-			public const int Zimbabwe = 2131165431;
+			public const int Zambia = 2131165431;
+			
+			// aapt resource value: 0x7F0700F8
+			public const int Zimbabwe = 2131165432;
 			
 			static Drawable()
 			{
