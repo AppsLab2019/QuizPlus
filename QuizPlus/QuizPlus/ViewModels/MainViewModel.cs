@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace QuizPlus.ViewModels
 {
+
     public sealed class MainViewModel : INotifyPropertyChanged
     {
         public int MaxRounds { get; } = 10;
@@ -18,6 +19,7 @@ namespace QuizPlus.ViewModels
         public Country CorrectCountry { get; private set; }
 
         public Color[] CountryColors { get; private set; }
+        
 
         public ICommand AnswerCommand { get; }
 
@@ -31,7 +33,7 @@ namespace QuizPlus.ViewModels
             _correctGuesses = 0;
 
             ChooseRandomCountries();
-            CountryColors = new Color[] { Color.Default, Color.Default, Color.Default, Color.Default };
+            CountryColors = new Color[] { Color.FromHex("#fff160"), Color.FromHex("#fff160"), Color.FromHex("#fff160"), Color.FromHex("#fff160") };
 
             AnswerCommand = new Command<string>(HandleAnswer);
         }
@@ -96,8 +98,8 @@ namespace QuizPlus.ViewModels
         }
 
         private async Task ChangeColors(int answerIndex, bool correct)
-        {   
-            
+        {
+
             if (correct)
                 CountryColors[answerIndex] = Color.LightGreen;
             else
@@ -105,7 +107,7 @@ namespace QuizPlus.ViewModels
 
             RaisePropertyChanged(nameof(CountryColors));
             await Task.Delay(850);
-            CountryColors[answerIndex] = Color.LightGray;
+            CountryColors[answerIndex] = Color.FromHex("#fff160");
          
         }
 
