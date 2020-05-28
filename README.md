@@ -1,6 +1,5 @@
 # QuizPlus
-Quiz app. World states and they're capitals.
-Beta version.
+Quiz app. World states and their capitals.
 
 Upcoming:
 - football clubs

@@ -43,11 +43,11 @@
             Margin="30"
             TextColor="Black"
             HorizontalOptions="CenterAndExpand"/>
-        <Button Text="Whole world" Command="{Binding WholeWorldButtonCommand}" Grid.Row="2"/>
-        <Button Text="Europe" Command="{Binding EuropeButtonCommand}" Grid.Row="3" />
-        <Button Text="Asia" Command="{Binding AsiaButtonCommand}" Grid.Row="4" />
-        <Button Text="America" Command="{Binding AmericaButtonCommand}" Grid.Row="5"/>
-        <Button Text="Africa" Command="{Binding AfricaButtonCommand}" Grid.Row="6"/>
+        <Button Text="Whole world" Command="{Binding ButtonCommand}" CommandParameter="0" Grid.Row="2"/>
+        <Button Text="Europe" Command="{Binding ButtonCommand}" CommandParameter="1" Grid.Row="3" />
+        <Button Text="Asia" Command="{Binding ButtonCommand}" CommandParameter="2" Grid.Row="4" />
+        <Button Text="America" Command="{Binding ButtonCommand}" CommandParameter="3" Grid.Row="5"/>
+        <Button Text="Africa" Command="{Binding ButtonCommand}" CommandParameter="4" Grid.Row="6"/>
         
     </Grid>
 </ContentPage>

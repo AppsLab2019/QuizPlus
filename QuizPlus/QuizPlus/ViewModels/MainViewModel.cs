@@ -56,23 +56,23 @@ namespace QuizPlus.ViewModels
 
             if (MaxRounds >= ++CurrentRound)
                 ChooseRandomCountries();
-            else 
+            else
+            {
                 await HandleGameEnd();
+                return;
+            }
 
             RaiseAllPropertiesChanged();
             _isBusy = false;
         }
         List<Country> InCorrectCountries = new List<Country>();
+
         private async Task HandleGameEnd()
         {
             string text = "Your incorrect guesses are ";
-            int i = 0;
             int x = 0;
-            
-            foreach(Country country in InCorrectCountries)
-            {
-                i += 1;
-            }
+
+             int i = InCorrectCountries.Count();
 
             foreach(Country country in InCorrectCountries)
             {
@@ -90,20 +90,16 @@ namespace QuizPlus.ViewModels
             }
             
             await Application.Current.MainPage.DisplayAlert("Congratulations", 
-                $"You guessed {_correctGuesses} out of {MaxRounds} correctly! {text}", "Reset");
+                $"You guessed {_correctGuesses} out of {MaxRounds} correctly! {text}", "Back");
 
-            CurrentRound = 1;
-            _correctGuesses = 0;
-            InCorrectCountries.Clear();
-
-            ChooseRandomCountries();
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
 
         private async Task ChangeColors(int answerIndex, bool correct)
         {   
             
             if (correct)
-                CountryColors[answerIndex] = Color.LightGreen;
+                CountryColors[answerIndex] = Color.FromHex("#1f5414");
             else
                 CountryColors[answerIndex] = Color.Red;
 
@@ -112,8 +108,8 @@ namespace QuizPlus.ViewModels
             CountryColors[answerIndex] = Color.LightGray;
          
         }
-        
 
+        List<Country> UsedCountries = new List<Country>();
         private void ChooseRandomCountries()
         {
             var rng = new Random();
@@ -123,12 +119,17 @@ namespace QuizPlus.ViewModels
             {               
                 var country = _countries[rng.Next(0, _countries.Count)];
 
+                if (UsedCountries.Contains(country))
+                    continue; 
+
                 if (!countries.Contains(country))
                     countries.Add(country);
             }
             
             CurrentCountries = countries.ToArray();
-            CorrectCountry = countries[rng.Next(0, 4)];
+            var randomCorrectCountry = countries[rng.Next(0, 4)];
+            UsedCountries.Add(randomCorrectCountry);
+            CorrectCountry = randomCorrectCountry;
         }
 
         #region INotifyPropertyChanged

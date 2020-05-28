@@ -11,7 +11,17 @@
         <vm:MainViewModel/>
     </ContentPage.BindingContext>
 
-    <Grid Padding="20">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#fff160"/>
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid BackgroundColor="#00B1D2" Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -50,10 +60,10 @@
                FontSize="Large"
                HorizontalOptions="Center"/>
 
-        <Button Grid.Row="6" Text="{Binding CurrentCountries[0].Capital}" Command="{Binding AnswerCommand}" BorderWidth="3" BorderColor="{Binding CountryColors[0]}" CommandParameter="0" CornerRadius="10" />
-        <Button Grid.Row="7" Text="{Binding CurrentCountries[1].Capital}" Command="{Binding AnswerCommand}" BorderWidth="3" BorderColor="{Binding CountryColors[1]}" CommandParameter="1" CornerRadius="10" />
-        <Button Grid.Row="8" Text="{Binding CurrentCountries[2].Capital}" Command="{Binding AnswerCommand}" BorderWidth="3" BorderColor="{Binding CountryColors[2]}" CommandParameter="2" CornerRadius="10" />
-        <Button Grid.Row="9" Text="{Binding CurrentCountries[3].Capital}" Command="{Binding AnswerCommand}" BorderWidth="3" BorderColor="{Binding CountryColors[3]}" CommandParameter="3" CornerRadius="10"/>
+        <Button Grid.Row="6" Text="{Binding CurrentCountries[0].Capital}" Command="{Binding AnswerCommand}" BorderWidth="6" BorderColor="{Binding CountryColors[0]}" CommandParameter="0"/>
+        <Button Grid.Row="7" Text="{Binding CurrentCountries[1].Capital}" Command="{Binding AnswerCommand}" BorderWidth="6" BorderColor="{Binding CountryColors[1]}" CommandParameter="1"/>
+        <Button Grid.Row="8" Text="{Binding CurrentCountries[2].Capital}" Command="{Binding AnswerCommand}" BorderWidth="6" BorderColor="{Binding CountryColors[2]}" CommandParameter="2"/>
+        <Button Grid.Row="9" Text="{Binding CurrentCountries[3].Capital}" Command="{Binding AnswerCommand}" BorderWidth="6" BorderColor="{Binding CountryColors[3]}" CommandParameter="3"/>
         
     </Grid>
 
