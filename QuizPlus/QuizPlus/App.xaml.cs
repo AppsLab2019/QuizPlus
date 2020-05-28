@@ -7,13 +7,13 @@ namespace QuizPlus
 {
     public partial class App
     {
-        public static List<Country> Countries { get; private set; }
+        public static List<Country> Countries { get; set; }
 
         public App()
         {
             InitializeComponent();
 
-            MainPage = new ContentPage();
+            MainPage = new Page();
         }
 
         protected override async void OnStart()
@@ -23,7 +23,7 @@ namespace QuizPlus
             await database.Initialize();
             Countries = await database.GetAllCountries();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainMenu());
         }
     }
 }

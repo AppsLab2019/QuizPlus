@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:QuizPlus.ViewModels"
+             mc:Ignorable="d"
+             x:Class="QuizPlus.Views.MainMenu">
+
+    <ContentPage.BindingContext>
+        <vm:MainMenuViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#fff160"/>
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="70" />
+                <Setter Property="Margin" Value="30,15"/>
+                <Setter Property="FontSize" Value="23"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid VerticalOptions="FillAndExpand" BackgroundColor="#00B1D2" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label      
+            FontAttributes="Bold"
+            Text="Welcome to Quiz Plus"
+            FontSize="30"
+            Grid.Row="0"
+            Margin="30"
+            TextColor="Black"
+            HorizontalOptions="CenterAndExpand"/>
+        <Button Text="Whole world" Command="{Binding WholeWorldButtonCommand}" Grid.Row="2"/>
+        <Button Text="Europe" Command="{Binding EuropeButtonCommand}" Grid.Row="3" />
+        <Button Text="Asia" Command="{Binding AsiaButtonCommand}" Grid.Row="4" />
+        <Button Text="America" Command="{Binding AmericaButtonCommand}" Grid.Row="5"/>
+        <Button Text="Africa" Command="{Binding AfricaButtonCommand}" Grid.Row="6"/>
+        
+    </Grid>
+</ContentPage>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace QuizPlus.ViewModels
 {
@@ -22,16 +23,15 @@ namespace QuizPlus.ViewModels
 
         private int _correctGuesses;
         private bool _isBusy;
-        private readonly List<Country> _allCountries;
+        public static List<Country> _countries { get; set; }
 
         public MainViewModel()
         {            
             CurrentRound = 1;
             _correctGuesses = 0;
-            _allCountries = App.Countries;
 
             ChooseRandomCountries();
-            CountryColors = new Color[] { Color.Gray, Color.Gray, Color.Gray, Color.Gray };
+            CountryColors = new Color[] { Color.Default, Color.Default, Color.Default, Color.Default };
 
             AnswerCommand = new Command<string>(HandleAnswer);
         }
@@ -100,16 +100,19 @@ namespace QuizPlus.ViewModels
         }
 
         private async Task ChangeColors(int answerIndex, bool correct)
-        {
+        {   
+            
             if (correct)
                 CountryColors[answerIndex] = Color.LightGreen;
             else
                 CountryColors[answerIndex] = Color.Red;
 
             RaisePropertyChanged(nameof(CountryColors));
-            await Task.Delay(1000);
+            await Task.Delay(850);
             CountryColors[answerIndex] = Color.LightGray;
+         
         }
+        
 
         private void ChooseRandomCountries()
         {
@@ -118,12 +121,12 @@ namespace QuizPlus.ViewModels
 
             while (countries.Count < 4)
             {               
-                var country = _allCountries[rng.Next(0, _allCountries.Count)];
+                var country = _countries[rng.Next(0, _countries.Count)];
 
                 if (!countries.Contains(country))
                     countries.Add(country);
             }
-
+            
             CurrentCountries = countries.ToArray();
             CorrectCountry = countries[rng.Next(0, 4)];
         }
