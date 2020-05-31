@@ -1,7 +1,7 @@
 ﻿using QuizPlus.Models;
-using QuizPlus.Views;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Menu = QuizPlus.Views.Menu;
 
 namespace QuizPlus
 {
@@ -23,7 +23,8 @@ namespace QuizPlus
             await database.Initialize();
             Countries = await database.GetAllCountries();
 
-            MainPage = new NavigationPage(new MainMenu());
+            MainPage = new NavigationPage(new Menu());
+
         }
     }
 }

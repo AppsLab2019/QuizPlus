@@ -60,11 +60,11 @@
                FontSize="Large"
                HorizontalOptions="Center"/>
 
-        <Button Grid.Row="6" Text="{Binding CurrentCountries[0].Capital}" Command="{Binding AnswerCommand}" BorderWidth="6" BackgroundColor="{Binding CountryColors[0]}" CommandParameter="0"/>
+        <Button Grid.Row="6" Text="{Binding CurrentCountries[0].Capital}" Command="{Binding AnswerCommand}" BorderWidth="6" BackgroundColor="{Binding CountryColors[0]}" CommandParameter="0"  />
         <Button Grid.Row="7" Text="{Binding CurrentCountries[1].Capital}" Command="{Binding AnswerCommand}" BorderWidth="6" BackgroundColor="{Binding CountryColors[1]}" CommandParameter="1"/>
         <Button Grid.Row="8" Text="{Binding CurrentCountries[2].Capital}" Command="{Binding AnswerCommand}" BorderWidth="6" BackgroundColor="{Binding CountryColors[2]}" CommandParameter="2"/>
         <Button Grid.Row="9" Text="{Binding CurrentCountries[3].Capital}" Command="{Binding AnswerCommand}" BorderWidth="6" BackgroundColor="{Binding CountryColors[3]}" CommandParameter="3"/>
-        
+
     </Grid>
 
 </ContentPage>

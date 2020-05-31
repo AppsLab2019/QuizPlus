@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System.Linq;
+using QuizPlus.Views;
+using Menu = QuizPlus.Views.Menu;
 
 namespace QuizPlus.ViewModels
 {
@@ -37,7 +39,7 @@ namespace QuizPlus.ViewModels
 
             AnswerCommand = new Command<string>(HandleAnswer);
         }
-        
+
         private async void HandleAnswer(string button)
         {
             if (_isBusy)
@@ -94,7 +96,7 @@ namespace QuizPlus.ViewModels
             await Application.Current.MainPage.DisplayAlert("Congratulations", 
                 $"You guessed {_correctGuesses} out of {MaxRounds} correctly! {text}", "Back");
 
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await Application.Current.MainPage.Navigation.PushAsync(new Menu());
         }
 
         private async Task ChangeColors(int answerIndex, bool correct)

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:vm="clr-namespace:QuizPlus.ViewModels"
+             mc:Ignorable="d"
+             x:Class="QuizPlus.Views.Menu">
+
+    <ContentPage.BindingContext>
+        <vm:MenuViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+            <ResourceDictionary>
+                <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#fff160"/>
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="70" />
+                <Setter Property="Margin" Value="30,15"/>
+                <Setter Property="FontSize" Value="23"/>
+                <Setter Property="FontAttributes" Value="None"/>
+            </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
+    <Grid VerticalOptions="FillAndExpand" BackgroundColor="#00B1D2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="logo.png"
+               HeightRequest="120"
+               Grid.Row="1"/>
+
+        <Label Text="Welcome to Quiz+"
+                   HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
+                   FontSize="30"
+                   Grid.Row="0"
+                   Margin="30"
+                   TextColor="Black"/>
+        <Button Command="{Binding ButtonCommand}" CommandParameter="Capitals" Text="Capitals" Grid.Row="2" HeightRequest="60" />
+        <Button Command="{Binding ButtonCommand}" CommandParameter="Football" Text="Football" Grid.Row="3" HeightRequest="60" />
+    </Grid>
+</ContentPage>

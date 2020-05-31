@@ -6,6 +6,10 @@
         Europe,
         America,
         Asia,
-        Africa
+        Africa,
+        PremierLeague,
+        LaLiga,
+        BundesLiga,
+        SerieA
     }
 }

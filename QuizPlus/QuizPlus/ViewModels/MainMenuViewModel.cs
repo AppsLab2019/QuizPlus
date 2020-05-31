@@ -24,7 +24,7 @@ namespace QuizPlus.ViewModels
             switch (buttonIndex)
             {
                 case 0:
-                    var allCountries = App.Countries;
+                    var allCountries = App.Countries.Where(country => IsCountryCategory(country.Category)).ToList();  
                     MainViewModel._countries = allCountries;
                     break;
                 case 1:
@@ -54,6 +54,14 @@ namespace QuizPlus.ViewModels
         {
             var navigation = Application.Current.MainPage.Navigation;
             return navigation.PushAsync(page);
+        }
+
+        private bool IsCountryCategory(Category category)
+        {
+            return category == Category.None
+                || category == Category.Europe
+                || category == Category.Africa
+                || category == Category.Asia;
         }
 
     }
