@@ -28,6 +28,18 @@ namespace QuizPlus.ViewModels
                     var premierLeagueClubs = App.Countries.Where(club => club.Category == Category.PremierLeague).ToList();
                     MainViewModel._countries = premierLeagueClubs;
                     break;
+                case 1:
+                    var laLigaClubs = App.Countries.Where(club => club.Category == Category.LaLiga).ToList();
+                    MainViewModel._countries = laLigaClubs;
+                    break;
+                case 2:
+                    var BundesLigaClubs = App.Countries.Where(club => club.Category == Category.BundesLiga).ToList();
+                    MainViewModel._countries = BundesLigaClubs;
+                    break;
+                case 3:
+                    var SerieAClubs = App.Countries.Where(club => club.Category == Category.SerieA).ToList();
+                    MainViewModel._countries = SerieAClubs;
+                    break;
                 default:
                     break;
             }
