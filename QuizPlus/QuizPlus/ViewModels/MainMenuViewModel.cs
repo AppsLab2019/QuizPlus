@@ -25,23 +25,23 @@ namespace QuizPlus.ViewModels
             {
                 case 0:
                     var allCountries = App.Countries.Where(country => IsCountryCategory(country.Category)).ToList();  
-                    MainViewModel._countries = allCountries;
+                    MainViewModel.Countries = allCountries;
                     break;
                 case 1:
                     var europeCountries = App.Countries.Where(country => country.Category == Category.Europe).ToList();
-                    MainViewModel._countries = europeCountries;
+                    MainViewModel.Countries = europeCountries;
                     break;
                 case 2:
                     var asiaCountries = App.Countries.Where(country => country.Category == Category.Asia).ToList();
-                    MainViewModel._countries = asiaCountries;
+                    MainViewModel.Countries = asiaCountries;
                     break;
                 case 3:
                     var americaCountries = App.Countries.Where(country => country.Category == Category.America).ToList();
-                    MainViewModel._countries = americaCountries;
+                    MainViewModel.Countries = americaCountries;
                     break;
                 case 4:
                     var africaCountries = App.Countries.Where(country => country.Category == Category.Africa).ToList();
-                    MainViewModel._countries = africaCountries;
+                    MainViewModel.Countries = africaCountries;
                     break;
                 default:
                     break;

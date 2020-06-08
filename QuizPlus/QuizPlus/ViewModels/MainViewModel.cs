@@ -27,7 +27,7 @@ namespace QuizPlus.ViewModels
 
         private int _correctGuesses;
         private bool _isBusy;
-        public static List<Country> _countries { get; set; }
+        public static List<Country> Countries { get; set; }
 
         public MainViewModel()
         {            
@@ -69,27 +69,40 @@ namespace QuizPlus.ViewModels
             RaiseAllPropertiesChanged();
             _isBusy = false;
         }
-        List<Country> InCorrectCountries = new List<Country>();
+
+        readonly List<Country> InCorrectCountries = new List<Country>();
 
         private async Task HandleGameEnd()
         {
             string text = "Your incorrect guesses are ";
             int x = 0;
 
-             int i = InCorrectCountries.Count();
+            int i = InCorrectCountries.Count();
 
-            foreach(Country country in InCorrectCountries)
+            foreach (Country country in InCorrectCountries)
             {
                 x += 1;
-                if (x != i)
+
+                if (country.Name == null)
                 {
-                    text += country.Name;
-                    text += ", ";
+                    text += country.Capital;
+                    if (x != i)
+                        text += ", ";
+                    else
+                        text += ".";
                 }
-                else 
+                else
                 {
-                    text += country.Name;
-                    text += ".";
+                    if (x != i)
+                    {
+                        text += country.Name;
+                        text += ", ";
+                    }
+                    else
+                    {
+                        text += country.Name;
+                        text += ".";
+                    }
                 }
             }
             
@@ -113,7 +126,7 @@ namespace QuizPlus.ViewModels
          
         }
 
-        List<Country> UsedCountries = new List<Country>();
+        readonly List<Country> UsedCountries = new List<Country>();
         private void ChooseRandomCountries()
         {
             var rng = new Random();
@@ -121,7 +134,7 @@ namespace QuizPlus.ViewModels
 
             while (countries.Count < 4)
             {               
-                var country = _countries[rng.Next(0, _countries.Count)];
+                var country = MainViewModel.Countries[rng.Next(0, MainViewModel.Countries.Count)];
 
                 if (UsedCountries.Contains(country))
                     continue; 
